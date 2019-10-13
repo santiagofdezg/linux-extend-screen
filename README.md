@@ -218,6 +218,10 @@ Or use `-localhost`, that achieves the same thing as `-allow 127.0.0.1`
 [More information about security](http://www.karlrunge.com/x11vnc/faq.html#faq-passwd)
 
 
+## Known issues
+
+- Often having a Firewall/Router sitting between the vncviewer and x11vnc will make it impossible for the viewer to connect to x11vnc. [(+info)](http://www.karlrunge.com/x11vnc/index.html#firewalls)
+
 ------------------------------------
 
 ## Resources I used to create this tutorial

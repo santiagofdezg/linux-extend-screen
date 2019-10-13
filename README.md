@@ -147,12 +147,36 @@ xrandr --rmmode "1280x800_60.00"
 xrandr -q
 ```
 
+
+## ADB Support
+
+You can connect an Android device to the computer with an USB cable to have access to the VNC server. It is done through the ADB platform.
+
+First, you need to install the proper tools:
+```
+sudo apt install adb android-tools-adb android-tools-fastboot
+```
+
+And now follow this steps:
+- connect your device to the PC with an USB cable
+- turn on USB debugging on your device
+- run the command `adb reverse tcp:5900 tcp:5900`
+- enable the second display with the commands of the tutorial
+- in the app _bVNC Free_ set `127.0.0.1` as server address and connect to the server
+
+After stopping the VNC server stop the ADB daemon:
+```
+adb kill-server
+```
+
+
 ## Notices
 
 - Data is unencrypted! (Relevant for public network connections)
 - Any network you are connected that can reach port 5900 can connect to your monitor! (Not a problem if using a USB connection)
 
 Due to this you should use some security options when using x11vnc.
+
 
 ## Add more security to the connection
 
@@ -221,7 +245,7 @@ Or use `-localhost`, that achieves the same thing as `-allow 127.0.0.1`
 
 ## Known issues
 
-- Often having a Firewall/Router sitting between the vncviewer and x11vnc will make it impossible for the viewer to connect to x11vnc. [(+info)](http://www.karlrunge.com/x11vnc/index.html#firewalls)
+- Often having a Firewall/Router sitting between the vncviewer and x11vnc will make it impossible for the viewer to connect to x11vnc. Try to use a USB connection to solve this problem. [(+info)](http://www.karlrunge.com/x11vnc/index.html#firewalls)
 
 ------------------------------------
 
@@ -230,5 +254,6 @@ Or use `-localhost`, that achieves the same thing as `-allow 127.0.0.1`
 - https://sangams.com.np/using-android-pc-as-a-second-monitor-in-linux
 - https://askubuntu.com/a/750497
 - https://github.com/brunodles/linux-second-screen/blob/master/tutorial.md
+- https://github.com/mrenrich84/vnc_virtual_display_linker
 
 **X11vnc** is a really powerful tool. I strongly recommend you to take a look at the [**documentation**](http://www.karlrunge.com/x11vnc)

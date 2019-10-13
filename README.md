@@ -1,8 +1,8 @@
 # Tutorial
 
-Do you have any old **Android tablet** at home? Then you have a new **second screen** for your laptop! With this tutorial you will be able to use any Android device to extend your screen on Linux. For this purpose we are going to use a wireless connection, but it can also be done through a USB cable.
+Do you have any old **Android tablet** at home? Then you have a new **second screen** for your laptop! With this tutorial you will be able to use any Android device to extend your screen on Linux. For this purpose we are going to use a wireless connection, but it can also be done through a USB cable. The tutorial seems very long but it is because I will explain each step in detail so that anyone can follow it. 
 
-> I guess this tutorial can also be done with an iPad or other laptop instead of an Android tablet, but I don't have the possibility to check it.
+> I guess this tutorial can also be done with an iPad or other laptop instead of an Android tablet, but I haven't checked it.
 
 ### Test environment
 - Laptop with Ubuntu 18.04

@@ -12,7 +12,7 @@ Do you have any old **Android tablet** at home? Then you have a new **second scr
 ### Necessary software
 - In the computer:
 	- a VNC server (as for example _x11vnc_)
-	```bash
+	```
 	sudo apt install x11vnc
 	```
 - In the tablet:
@@ -116,8 +116,14 @@ After stopping the VNC server you need to disable the second screen `HDMI-1-1`:
 xrandr --output HDMI-1-1 --off
 ```
 
-So once you have created the modeline for `HDMI-1-1` you don't need to create it again the next time you want to use it, just run the last commands:
+### Summary
+
+Every time you reboot the computer you will have to add the modeline again. Then I will make a summary of all the commands used in this tutorial:
 ```
+# Create the virtual monitor (every time after rebooting the computer)
+xrandr --newmode "1280x800_60.00"  83.46  1280 1344 1480 1680  800 801 804 828  -HSync +Vsync
+xrandr --addmode HDMI-1-1 1280x800_60.00
+
 # Enable the second display
 xrandr --output HDMI-1-1 --mode 1280x800_60.00 --left-of eDP-1-1
 x11vnc -clip 1280x800+0+0
@@ -130,6 +136,7 @@ xrandr --output HDMI-1-1 --off
 
 To remove the mode:
 ```
+xrandr --output HDMI-1-1 --off
 xrandr --delmode HDMI-1-1 "1280x800_60.00"
 xrandr --rmmode "1280x800_60.00"
 ```

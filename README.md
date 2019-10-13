@@ -139,10 +139,78 @@ xrandr --rmmode "1280x800_60.00"
 xrandr -q
 ```
 
+## Notices
+
+- Data is unencrypted! (Relevant for public network connections)
+- Any network you are connected that can reach port 5900 can connect to your monitor! (Not a problem if using a USB connection)
+
+Due to this you should use some security options when using x11vnc.
+
+## Add more security to the connection
+
+### Change the port of the connection
+
+By default x11vnc use the port 5900. We can change it by running the following command:
+```
+x11vnc -rfbport <port_number>
+```
+If something else is using that port x11vnc will exit immediately.
+
+
+### Establish a password for the connection
+
+You can use one of the following commands:
+```
+x11vnc -storepasswd password /path/to/passfile
+x11vnc -storepasswd /path/to/passfile
+x11vnc -storepasswd
+# The last one will save the password in ~/.vnc/passwd
+```
+And then start x11vnc via:
+```
+x11vnc -rfbauth /path/to/passfile
+```
+
+**WARNING**: Even with a password, the subsequent VNC traffic is sent in the clear. **Solution** => SSL connection.
+
+
+### Use a SSL connection or Tunneling
+
+Consider tunnelling via ssh: http://www.karlrunge.com/x11vnc/#tunnelling
+
+Or using the x11vnc SSL options: `-ssl` and `-stunnel`
+
+The `-ssl` mode requires an SSL certificate and key (i.e. .pem file). These are usually created via the openssl program. In fact when you run the `-ssl` option (same as "-ssl SAVE") it will run openssl for you automatically. It will prompt you if you want to protect it with a passphrase. In general, the PEM file contains both the Certificate (i.e. public key) and the Private Key, so it should be protected from being read by untrusted users. The best way to do this is to encrypt the key with a passphrase (note however this requires supplying the passphrase each time x11vnc is started up).
+
+Example:
+```
+x11vnc -ssl SAVE ...
+```
+This way it will be saved in the default directory ~/.vnc/certs/ as server.crt (the certificate only) and server.pem (both certificate and private key.) This opens up the possibility of copying the server.crt to machines where the VNC Viewer will be run to enable authenticating the x11vnc SSL VNC server to the clients.
+
+> If you are using the _bVNC Free_ app in the Android device, go to the _Connection Type_ menu and select the _Secure VNC over SSL Tunnel_ option.
+
+
+### Limit which machines can connect to the VNC server
+
+With the `-allow` option we can limit connections by hostname or IP address. Example:
+```
+x11vnc -allow 192.168.0.1,192.168.0.2
+```
+
+Or use `-localhost`, that achieves the same thing as `-allow 127.0.0.1`
+
+
+
+[More information about security](http://www.karlrunge.com/x11vnc/faq.html#faq-passwd)
+
+
 ------------------------------------
 
-### Resources I used to create this tutorial
+## Resources I used to create this tutorial
 
-- https://sangams.com.np/using-android-pc-as-a-second-monitor-in-linux/
+- https://sangams.com.np/using-android-pc-as-a-second-monitor-in-linux
 - https://askubuntu.com/a/750497
 - https://github.com/brunodles/linux-second-screen/blob/master/tutorial.md
+
+**X11vnc** is a really powerful tool. I strongly recommend you to take a look at the [**documentation**](http://www.karlrunge.com/x11vnc)

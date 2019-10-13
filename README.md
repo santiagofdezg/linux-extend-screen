@@ -79,6 +79,7 @@ Copy everything after the word `Modeline` (exclude it) into the next command. No
 ```
 xrandr --newmode "1280x800_60.00"  83.46  1280 1344 1480 1680  800 801 804 828  -HSync +Vsync
 ```
+> **Note**: xrandr means X Resize and Rotate    (just a curiosity)
 
 Add this new mode to an unused output port. `HDMI-1-1` in this case.
 > You can try the output ports that work for you.

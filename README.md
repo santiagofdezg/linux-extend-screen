@@ -171,6 +171,12 @@ And then start x11vnc via:
 x11vnc -rfbauth /path/to/passfile
 ```
 
+Or run 
+```
+x11vnc -usepw
+```
+It automatically use your ~/.vnc/passwd or ~/.vnc/passwdfile password files. Under -usepw, x11vnc will exit if it cannot find a password to use. 
+
 **WARNING**: Even with a password, the subsequent VNC traffic is sent in the clear. **Solution** => SSL connection.
 
 

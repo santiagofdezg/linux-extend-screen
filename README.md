@@ -82,7 +82,7 @@ xrandr --newmode "1280x800_60.00"  83.46  1280 1344 1480 1680  800 801 804 828  
 > **Note**: xrandr means X Resize and Rotate    (just a curiosity)
 
 Add this new mode to an unused output port. `HDMI-1-1` in this case.
-> You can try the output ports that work for you.
+> You may have a different output ports so you need to try the output ports that work for you. Find the available ports with the command `xrandr` like in the [first section](#1-get-some-information)
 
 ```
 xrandr --addmode HDMI-1-1 1280x800_60.00

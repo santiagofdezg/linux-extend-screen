@@ -1,6 +1,6 @@
 # Tutorial
 
-Do you have any old **Android tablet** at home? Then you have a new **second screen** for your laptop! With this tutorial you will be able to use any Android device to extend your screen on Linux. For this purpose we are going to use a wireless connection, but it can also be done through a USB cable. The tutorial seems very long but it is because I will explain each step in detail so that anyone can follow it. 
+Do you have any old **Android tablet** at home? Then you have a new **second screen** for your laptop! With this tutorial you will be able to use any Android device to extend your screen on Linux. For this purpose we are going to use a wireless connection, but it can also be done through a [USB cable](#adb-support). The tutorial seems very long but it is because I will explain each step in detail so that anyone can follow it. 
 
 > I guess this tutorial can also be done with an iPad or other laptop instead of an Android tablet, but I haven't checked it.
 
@@ -161,7 +161,7 @@ And now follow this steps:
 - connect your device to the PC with an USB cable
 - turn on USB debugging on your device
 - run the command `adb reverse tcp:5900 tcp:5900`
-- enable the second display with the commands of the tutorial
+- enable the second display with the [commands of the tutorial](#summary)
 - in the app _bVNC Free_ set `127.0.0.1` as server address and connect to the server
 
 After stopping the VNC server stop the ADB daemon:
@@ -173,7 +173,7 @@ adb kill-server
 ## Notices
 
 - Data is unencrypted! (Relevant for public network connections)
-- Any network you are connected that can reach port 5900 can connect to your monitor! (Not a problem if using a USB connection)
+- Any network you are connected that can reach port 5900 can connect to your monitor! (Not a problem if using a [USB connection](#adb-support))
 
 Due to this you should use some security options when using x11vnc.
 
@@ -245,7 +245,7 @@ Or use `-localhost`, that achieves the same thing as `-allow 127.0.0.1`
 
 ## Known issues
 
-- Often having a Firewall/Router sitting between the vncviewer and x11vnc will make it impossible for the viewer to connect to x11vnc. Try to use a USB connection to solve this problem. [(+info)](http://www.karlrunge.com/x11vnc/index.html#firewalls)
+- Often having a Firewall/Router sitting between the vncviewer and x11vnc will make it impossible for the viewer to connect to x11vnc. Try to use a [USB connection](#adb-support) to solve this problem. [(+info)](http://www.karlrunge.com/x11vnc/index.html#firewalls)
 
 ------------------------------------
 

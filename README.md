@@ -151,6 +151,7 @@ xrandr -q
 ## ADB Support
 
 You can connect an Android device to the computer with an USB cable to have access to the VNC server. It is done through the ADB platform.
+According to [this link](https://stackoverflow.com/questions/31525431/getting-error-closed-twice-on-adb-reverse), adb reverse was introduced in Android 5.0 onwards, so, to use this feature, your android tablet can not be 'that old'.
 
 First, you need to install the proper tools:
 ```
@@ -159,8 +160,8 @@ sudo apt install adb android-tools-adb android-tools-fastboot
 
 And now follow this steps:
 - connect your device to the PC with an USB cable
-- turn on USB debugging on your device
-- run the command `adb reverse tcp:5900 tcp:5900`
+- turn on USB debugging on your device (inside developer options, which is enabled by tapping the Build Number option 7 times)
+- run the reverse command on PC `adb reverse tcp:5900 tcp:5900`
 - enable the second display with the [commands of the tutorial](#summary)
 - in the app _bVNC Free_ set `127.0.0.1` as server address and connect to the server
 
